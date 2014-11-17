@@ -8,4 +8,16 @@
   <dt>Cuisine</dt>
   <dd><%= @cuisine.name %></dd>
 
+  <dt>Favorites</dt>
+  <dd>
+    <ul>
+      <% @favorites.each do |fav| %>
+      <% venue = Venue.find(fav.venue_id)%>
+      <% user = User.find(fav.user_id) %>
+        <li><%= user.username.capitalize %> likes eating at <%= venue.name %></li>
+      <% end %>
+    </ul>
+  </dd>
 </dl>
+
+

@@ -48,6 +48,17 @@
     </script>
     <div id="map-canvas"></div>
   </dd>
+
+  <dt>Favorites</dt>
+  <dd>
+    <ul>
+      <% @favorites.each do |fav| %>
+      <% dish = Dish.find(fav.dish_id) %>
+      <% user = User.find(fav.user_id) %>
+        <li><%= dish.name.capitalize %> is liked by <%= user.username.capitalize %></li>
+      <% end %>
+    </ul>
+  </dd>
 </dl>
 
 
