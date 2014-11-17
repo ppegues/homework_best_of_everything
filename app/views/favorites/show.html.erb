@@ -4,15 +4,26 @@
 
 <dl class="dl-horizontal">
   <dt>User</dt>
-  <dd><%= @favorite.user_id %></dd>
+  <dd><%= @user.username.capitalize %></dd>
 
   <dt>Dish</dt>
-  <dd><%= @favorite.dish_id %></dd>
+  <dd><%= @dish.name %></dd>
 
   <dt>Venue</dt>
-  <dd><%= @favorite.venue_id %></dd>
+  <dd><%= @venue.name %></dd>
 
   <dt>Notes</dt>
   <dd><%= @favorite.notes %></dd>
+
+  <dt>Favorite Dishes</dt>
+  <dd>
+    <ul>
+    <% @fav_dishes.each do |fav| %>
+    <% dish = Dish.find(fav.dish_id) %>
+    <% venue = Venue.find(fav.venue_id) %>
+      <li><%= dish.name %> @ <%= venue.name %></li>
+    <% end %>
+    </ul>
+  </dd>
 
 </dl>
